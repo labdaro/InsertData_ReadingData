@@ -11,6 +11,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        getshow.setOnClickListener {
+            val inputSearch = inputData.text.toString()
+            val search = dbHandler!!.getOne(inputSearch)
+            showData.text = search
+        }
+
+
+
         dbHandler = DatabaseHandler(this)
         //on Click Save button
         button_save.setOnClickListener(View.OnClickListener {
@@ -47,9 +55,5 @@ class MainActivity : AppCompatActivity() {
         return validate
     }
 
-    fun queryone(){
-        var inputSearch = inputData.text.toString()
-        var search = dbHandler!!.getOne(inputSearch)
-        showData.text = search
-    }
+
 }

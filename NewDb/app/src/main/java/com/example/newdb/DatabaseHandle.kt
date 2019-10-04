@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 
-val DB_NAME = "UsersDB"
+val DB_NAME = "TestDB"
 val DB_VERSIOM = 1;
 val TABLE_NAME = "SectionC"
 val ID = "id"
@@ -55,11 +55,11 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME, nul
         db.close()
         return allUser
     }
-    fun getOne(firstname:String):String{
+    fun getOne(lastname:String):String{
         var user = "No user found"
         var db = this.readableDatabase
-        var selectOne = "Select * from $TABLE_NAME where $FIRST_NAME = ? "
-        db.rawQuery(selectOne, arrayOf(firstname)).use {
+        var selectOne = "Select * from $TABLE_NAME where $LAST_NAME = ? "
+        db.rawQuery(selectOne, arrayOf(lastname)).use {
             if (it.moveToNext()) {
                 var id = it.getString(it.getColumnIndex(ID))
                 var firstName = it.getString(it.getColumnIndex(FIRST_NAME))
